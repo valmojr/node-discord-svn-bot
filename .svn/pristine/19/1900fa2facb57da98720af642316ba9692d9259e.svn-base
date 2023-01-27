@@ -1,0 +1,101 @@
+import axios from 'axios';
+import nodeSvnlook from 'node-svnlook';
+import { botusernamebase, botavatarurl, reporootdir, svnlookDir } from './DiscordBotConfig';
+// node localdessearquivo.js %REVISION_NUM% %REPO_NAME% %WEBHOOK_URL%
+// https://localhost/svn/discordBot/
+const MAX_LENGTH_LOG = 200;
+const MAX_LENGTH_CHANGELIST = 1700;
+
+// Revision number of the commit
+const revision = process.argv[2]
+
+//Name of the repository that was committed to
+const reponame = process.argv[3]
+
+// URL of webhook to which we'll send our payload
+const webhookurl = process.argv[4]
+
+// Assemble the repository's file path
+const repopath = `${reporootdir}${reponame}`
+
+/*
+// preciso pegar o author do svnlook
+const author = nodeSvnlook.author("vai toma no cu");
+// preciso pegar o log do svnlook
+const loglong = nodeSvnlook.author("vai toma no cu");
+let log_decoded = false;
+
+// Set default message for when there's no commit message
+if (loglong.length == 0) {
+	log_decoded = True
+	loglong = "<no commit message>"
+} else {
+	log_decoded = False
+}
+
+// Get the commit's changelist with svnlook
+const changelistlong = nodeSvnlook.changed("");
+process_changelist = subprocess.Popen([svnlook, "changed", repopath, "-r", revision], stdout=subprocess.PIPE)
+changelistlong, changelistlong_err = process_changelist.communicate()
+
+// Set default message for when there's (somehow) no changelist
+if (changelistlong.decode().isspace()) {
+	changelist_decoded = True
+	changelistlong = "<no changelist>"
+} else {
+	changelist_decoded = False
+}
+
+// Prune the new lines from the endings
+author = author.strip()
+loglong = loglong.strip()
+changelistlong = changelistlong.strip()
+
+// Truncate end of log if it exceeds max length
+if ((len(loglong) > (MAX_LENGTH_LOG - 6))) {
+	log_decoded = True
+	logparsed = loglong[0:(MAX_LENGTH_LOG - 6)]
+	log = "{0} <...>".format(logparsed.decode())
+} else {
+	log = loglong
+}
+
+// Truncate end of changelist if it exceeds max length
+if (len(changelistlong) > (MAX_LENGTH_CHANGELIST - 6)) {
+	changelist_decoded = True
+	changelistparsed = changelistlong[0:(MAX_LENGTH_CHANGELIST - 6)]
+	changelist = "{0} <...>".format(changelistparsed.decode())
+} else {
+	changelist = changelistlong
+}
+
+// Do some last-minute pruning for good measure
+reponame = reponame.strip()
+revision = revision.strip()
+author = author.decode()
+
+// Decode the log and changelist if they haven't been already
+if (!log_decoded) {
+	log = log.decode();
+} else if (!changelist_decoded) {
+	changelist = changelist.decode();
+}
+
+// Assemble our bot's username based on the base name and the author who made the commit (e.g., "Aaron (Subversion)")
+const botusername = `${author} (${botusernamebase})`;
+
+// Assemble our message to include in the payload
+const message = "**" + reponame + "** Subversion revision "+revision+" committed by "+author+":\n```"+log+"``` \n```"+changelist+"```";
+
+// Construct our payload to send to the webhook
+const payload = {
+	'username': botusername,
+	'avatar_url': botavatarurl,
+	'content': message
+}
+
+// Send our payload to the webhook with an HTTP POST request
+r = requests.post(webhookurl, data=payload)
+print(r.status_code, r.reason)
+
+*/

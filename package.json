@@ -1,0 +1,25 @@
+{
+  "name": "discord-svn-bot",
+  "version": "0.0.0",
+  "description": "Simple Discord Webhooked Bot that shows up SVN commits",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js 1 discordBot https://discord.com/api/webhooks/1068493135669375066/uVqX30EyHRFnr63p1NAe13gTHM7p3neqjqYUBS161eeWoTqv-wGbedXJ4nzudW3sLm4u",
+    "test": "test"
+  },
+  "keywords": [
+    "svn",
+    "discord"
+  ],
+  "author": "Valmo Trindade",
+  "license": "MIT",
+  "dependencies": {
+    "@rauschma/stringio": "^1.4.0",
+    "axios": "^1.2.5",
+    "node-svnlook": "^1.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
